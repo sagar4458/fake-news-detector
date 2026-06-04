@@ -29,9 +29,9 @@ Originally built in October 2025. Rebuilt from scratch in June 2026 with a real 
 |---|---|
 | ![Analysis 1](screenshots/5.new_dashboard_analysis_report.png) | ![Analysis 2](screenshots/6.new_dashboard_analysis_report_2.png) |
 
-| URL Error Handling |
-|---|---|
+### url error handling
 | ![Error Handling](screenshots/7.new_dashboard_analysis_url_error_report.png) |
+|---|
 
 ### google api metrics - june 2026
 | Traffic | Errors | Median Latency |
