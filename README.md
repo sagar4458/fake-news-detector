@@ -84,16 +84,6 @@ Dataset: [ISOT Fake News Dataset](https://www.kaggle.com/datasets/emineyetm/fake
 
 ---
 
-## api integration - verified live
-
-Google Fact Check Tools API connected and verified working.
-
-![API Dashboard](screenshots/factcheck_api.png)
-
-**2 requests · 0 errors · 524ms median latency** - from testing session, June 2026.
-
----
-
 ## running it
 
 ```bash
@@ -123,4 +113,4 @@ URL fetch works on most open-access sites. Paywalled and JavaScript-rendered pag
 
 ---
 
-*Originally developed: October 2025 - rebuilt and open-sourced: June 2026*
+*Originally developed in October 2025 - rebuilt and open-sourced: June 2026*
