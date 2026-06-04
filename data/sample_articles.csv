@@ -1,0 +1,201 @@
+article_id,topic,source_type,verdict,ml_confidence,sensationalism_score,readability_fk,date_analysed
+ART_0001,Science,Facebook post,Credible,0.751,0.008,33.6,2025-09-24
+ART_0002,Politics,News website,Suspicious,0.521,0.181,45.2,2025-07-07
+ART_0003,Celebrity,Twitter/X,Likely Misinformation,0.833,0.453,75.7,2025-09-20
+ART_0004,Science,WhatsApp forward,Suspicious,0.72,0.155,49.0,2025-09-21
+ART_0005,Finance,Online blog,Credible,0.697,0.099,34.9,2025-09-16
+ART_0006,Finance,WhatsApp forward,Likely Misinformation,0.615,0.248,58.1,2025-07-24
+ART_0007,Finance,Telegram,Credible,0.942,0.116,50.9,2025-07-07
+ART_0008,Science,Telegram,Credible,0.883,0.1,62.7,2025-09-11
+ART_0009,Technology,News website,Credible,0.961,0.128,54.5,2025-07-24
+ART_0010,Politics,WhatsApp forward,Likely Misinformation,0.818,0.293,75.8,2025-09-21
+ART_0011,Disaster,Twitter/X,Likely Misinformation,0.887,0.045,70.9,2025-07-25
+ART_0012,Politics,Email chain,Credible,0.766,0.014,37.6,2025-07-17
+ART_0013,Health,Telegram,Suspicious,0.77,0.187,75.6,2025-09-16
+ART_0014,Disaster,Telegram,Credible,0.639,0.003,66.1,2025-09-10
+ART_0015,Technology,Facebook post,Credible,0.791,0.161,75.5,2025-07-04
+ART_0016,Politics,WhatsApp forward,Suspicious,0.759,0.05,47.7,2025-08-03
+ART_0017,Science,News website,Credible,0.728,0.198,41.3,2025-09-27
+ART_0018,Celebrity,Email chain,Likely Misinformation,0.777,0.019,50.3,2025-08-18
+ART_0019,Celebrity,Twitter/X,Suspicious,0.808,0.017,72.3,2025-09-26
+ART_0020,Technology,Twitter/X,Credible,0.919,0.184,41.5,2025-09-19
+ART_0021,Health,Twitter/X,Suspicious,0.797,0.056,57.2,2025-09-02
+ART_0022,Technology,Online blog,Credible,0.409,0.041,37.2,2025-09-27
+ART_0023,Health,Online blog,Credible,0.494,0.048,71.7,2025-08-22
+ART_0024,Finance,News website,Likely Misinformation,0.838,0.084,79.4,2025-09-03
+ART_0025,Finance,Twitter/X,Suspicious,0.457,0.046,33.8,2025-09-25
+ART_0026,Disaster,News website,Suspicious,0.962,0.065,61.7,2025-08-16
+ART_0027,Disaster,News website,Credible,0.65,0.136,63.0,2025-07-25
+ART_0028,Technology,WhatsApp forward,Suspicious,0.814,0.016,37.7,2025-09-26
+ART_0029,Celebrity,News website,Suspicious,0.584,0.021,30.3,2025-08-15
+ART_0030,Finance,Twitter/X,Credible,0.477,0.037,52.4,2025-09-17
+ART_0031,Health,Twitter/X,Credible,0.605,0.019,59.9,2025-08-28
+ART_0032,Finance,News website,Credible,0.625,0.017,75.1,2025-07-19
+ART_0033,Celebrity,News website,Suspicious,0.498,0.054,43.4,2025-07-03
+ART_0034,Finance,News website,Credible,0.574,0.157,48.1,2025-07-24
+ART_0035,Disaster,Telegram,Suspicious,0.513,0.021,45.2,2025-08-11
+ART_0036,Science,Email chain,Likely Misinformation,0.9,0.264,51.5,2025-09-20
+ART_0037,Finance,Telegram,Credible,0.949,0.04,45.7,2025-08-11
+ART_0038,Celebrity,Facebook post,Credible,0.685,0.115,42.1,2025-08-09
+ART_0039,Science,Online blog,Likely Misinformation,0.466,0.338,59.6,2025-09-06
+ART_0040,Disaster,Twitter/X,Suspicious,0.953,0.092,65.4,2025-08-26
+ART_0041,Celebrity,Twitter/X,Credible,0.875,0.159,50.5,2025-08-05
+ART_0042,Politics,Online blog,Suspicious,0.782,0.143,69.5,2025-07-15
+ART_0043,Science,Telegram,Likely Misinformation,0.632,0.304,76.0,2025-09-14
+ART_0044,Technology,Online blog,Suspicious,0.807,0.162,59.7,2025-07-04
+ART_0045,Celebrity,Facebook post,Likely Misinformation,0.606,0.388,32.2,2025-09-22
+ART_0046,Technology,Online blog,Suspicious,0.96,0.086,30.5,2025-08-08
+ART_0047,Disaster,Telegram,Suspicious,0.737,0.115,52.3,2025-08-15
+ART_0048,Disaster,Facebook post,Likely Misinformation,0.69,0.207,31.2,2025-07-10
+ART_0049,Health,Twitter/X,Credible,0.882,0.146,47.4,2025-08-15
+ART_0050,Disaster,News website,Likely Misinformation,0.602,0.059,66.1,2025-08-11
+ART_0051,Health,Email chain,Credible,0.812,0.005,47.2,2025-07-22
+ART_0052,Celebrity,WhatsApp forward,Likely Misinformation,0.699,0.331,46.5,2025-08-15
+ART_0053,Science,Facebook post,Credible,0.507,0.128,51.6,2025-07-24
+ART_0054,Politics,News website,Suspicious,0.743,0.078,65.2,2025-07-09
+ART_0055,Technology,Email chain,Likely Misinformation,0.436,0.061,73.6,2025-07-12
+ART_0056,Science,Twitter/X,Credible,0.552,0.173,56.4,2025-09-11
+ART_0057,Disaster,News website,Suspicious,0.74,0.07,72.3,2025-09-06
+ART_0058,Celebrity,Email chain,Likely Misinformation,0.573,0.369,34.2,2025-07-11
+ART_0059,Finance,Twitter/X,Credible,0.506,0.139,55.5,2025-08-20
+ART_0060,Science,News website,Credible,0.508,0.127,64.7,2025-09-06
+ART_0061,Science,Online blog,Suspicious,0.481,0.063,52.6,2025-07-28
+ART_0062,Health,News website,Credible,0.479,0.163,78.2,2025-09-21
+ART_0063,Celebrity,News website,Suspicious,0.641,0.168,54.4,2025-07-19
+ART_0064,Technology,WhatsApp forward,Credible,0.569,0.055,56.9,2025-07-25
+ART_0065,Celebrity,Email chain,Suspicious,0.844,0.11,35.7,2025-07-09
+ART_0066,Technology,Online blog,Likely Misinformation,0.714,0.454,68.0,2025-08-18
+ART_0067,Science,Twitter/X,Credible,0.827,0.131,42.4,2025-07-15
+ART_0068,Technology,Email chain,Credible,0.45,0.173,35.9,2025-07-07
+ART_0069,Disaster,Facebook post,Likely Misinformation,0.603,0.426,61.6,2025-07-20
+ART_0070,Politics,Email chain,Credible,0.52,0.012,47.5,2025-08-20
+ART_0071,Finance,Facebook post,Suspicious,0.57,0.115,77.6,2025-09-22
+ART_0072,Politics,Email chain,Likely Misinformation,0.856,0.551,79.6,2025-09-05
+ART_0073,Politics,WhatsApp forward,Suspicious,0.485,0.064,42.4,2025-09-13
+ART_0074,Disaster,Facebook post,Suspicious,0.556,0.083,52.6,2025-09-26
+ART_0075,Health,News website,Likely Misinformation,0.699,0.167,76.8,2025-08-15
+ART_0076,Finance,Telegram,Likely Misinformation,0.401,0.464,66.6,2025-09-15
+ART_0077,Celebrity,Online blog,Suspicious,0.893,0.159,49.9,2025-08-27
+ART_0078,Finance,Online blog,Credible,0.88,0.068,58.9,2025-09-28
+ART_0079,Finance,Facebook post,Suspicious,0.842,0.009,61.3,2025-08-01
+ART_0080,Technology,WhatsApp forward,Credible,0.656,0.0,77.9,2025-07-23
+ART_0081,Celebrity,Online blog,Likely Misinformation,0.492,0.56,43.7,2025-09-12
+ART_0082,Finance,Facebook post,Credible,0.924,0.033,49.8,2025-08-24
+ART_0083,Politics,News website,Suspicious,0.78,0.141,30.1,2025-08-03
+ART_0084,Politics,Telegram,Credible,0.794,0.002,64.8,2025-07-28
+ART_0085,Politics,News website,Credible,0.441,0.077,66.5,2025-07-04
+ART_0086,Finance,WhatsApp forward,Credible,0.622,0.163,73.7,2025-09-22
+ART_0087,Disaster,Telegram,Credible,0.405,0.13,52.0,2025-09-07
+ART_0088,Politics,News website,Suspicious,0.757,0.088,40.9,2025-07-05
+ART_0089,Disaster,Facebook post,Likely Misinformation,0.623,0.578,45.7,2025-07-08
+ART_0090,Health,WhatsApp forward,Credible,0.721,0.12,60.4,2025-09-01
+ART_0091,Celebrity,Online blog,Likely Misinformation,0.519,0.364,39.4,2025-08-10
+ART_0092,Technology,Email chain,Suspicious,0.954,0.099,35.6,2025-08-21
+ART_0093,Disaster,Twitter/X,Suspicious,0.972,0.187,36.6,2025-09-14
+ART_0094,Celebrity,WhatsApp forward,Credible,0.842,0.191,68.5,2025-07-19
+ART_0095,Finance,WhatsApp forward,Credible,0.423,0.012,69.5,2025-09-10
+ART_0096,Disaster,Email chain,Suspicious,0.641,0.14,34.1,2025-09-18
+ART_0097,Finance,Twitter/X,Suspicious,0.58,0.102,40.2,2025-07-18
+ART_0098,Disaster,Facebook post,Credible,0.843,0.13,62.2,2025-08-23
+ART_0099,Technology,WhatsApp forward,Credible,0.434,0.017,51.7,2025-08-20
+ART_0100,Finance,Facebook post,Suspicious,0.83,0.148,36.0,2025-09-05
+ART_0101,Politics,News website,Suspicious,0.953,0.105,69.1,2025-09-09
+ART_0102,Politics,Facebook post,Credible,0.853,0.054,74.3,2025-07-11
+ART_0103,Finance,Telegram,Likely Misinformation,0.437,0.427,58.8,2025-07-16
+ART_0104,Finance,Twitter/X,Suspicious,0.69,0.113,48.4,2025-08-25
+ART_0105,Disaster,Facebook post,Credible,0.819,0.046,55.4,2025-07-28
+ART_0106,Politics,Twitter/X,Likely Misinformation,0.674,0.23,37.5,2025-07-18
+ART_0107,Celebrity,Facebook post,Likely Misinformation,0.78,0.135,42.4,2025-09-11
+ART_0108,Health,Telegram,Credible,0.616,0.1,75.1,2025-07-08
+ART_0109,Health,News website,Likely Misinformation,0.44,0.279,44.1,2025-08-11
+ART_0110,Science,Twitter/X,Credible,0.614,0.058,69.2,2025-09-20
+ART_0111,Finance,Telegram,Credible,0.964,0.2,68.8,2025-09-18
+ART_0112,Politics,WhatsApp forward,Likely Misinformation,0.404,0.246,41.6,2025-08-21
+ART_0113,Health,Online blog,Likely Misinformation,0.401,0.394,72.5,2025-09-10
+ART_0114,Disaster,WhatsApp forward,Credible,0.643,0.192,78.6,2025-07-23
+ART_0115,Health,WhatsApp forward,Credible,0.92,0.104,65.0,2025-08-15
+ART_0116,Health,Telegram,Likely Misinformation,0.455,0.08,71.0,2025-07-19
+ART_0117,Science,Facebook post,Suspicious,0.959,0.047,43.0,2025-08-26
+ART_0118,Technology,Facebook post,Credible,0.589,0.091,41.7,2025-07-05
+ART_0119,Disaster,Twitter/X,Likely Misinformation,0.49,0.099,53.3,2025-08-04
+ART_0120,Technology,WhatsApp forward,Suspicious,0.662,0.093,72.6,2025-07-06
+ART_0121,Finance,Email chain,Likely Misinformation,0.809,0.362,40.8,2025-08-05
+ART_0122,Politics,Online blog,Credible,0.63,0.01,44.9,2025-07-01
+ART_0123,Technology,News website,Likely Misinformation,0.722,0.33,34.7,2025-07-26
+ART_0124,Health,Twitter/X,Likely Misinformation,0.436,0.469,41.1,2025-07-27
+ART_0125,Celebrity,Facebook post,Credible,0.944,0.017,59.3,2025-07-01
+ART_0126,Politics,Facebook post,Likely Misinformation,0.657,0.077,75.3,2025-08-04
+ART_0127,Science,Twitter/X,Credible,0.497,0.115,71.1,2025-08-16
+ART_0128,Celebrity,News website,Credible,0.5,0.043,39.4,2025-08-15
+ART_0129,Health,Telegram,Likely Misinformation,0.759,0.147,44.8,2025-08-18
+ART_0130,Health,Online blog,Suspicious,0.622,0.084,62.1,2025-09-08
+ART_0131,Technology,Telegram,Suspicious,0.861,0.198,69.1,2025-08-16
+ART_0132,Science,Online blog,Suspicious,0.929,0.1,49.4,2025-07-01
+ART_0133,Politics,Twitter/X,Credible,0.92,0.156,32.9,2025-08-17
+ART_0134,Disaster,WhatsApp forward,Credible,0.965,0.02,62.8,2025-08-18
+ART_0135,Celebrity,Twitter/X,Likely Misinformation,0.843,0.569,58.8,2025-08-12
+ART_0136,Technology,WhatsApp forward,Likely Misinformation,0.502,0.356,70.3,2025-09-12
+ART_0137,Health,Facebook post,Likely Misinformation,0.806,0.569,58.2,2025-09-07
+ART_0138,Technology,News website,Likely Misinformation,0.714,0.105,31.9,2025-07-08
+ART_0139,Health,Telegram,Suspicious,0.677,0.066,60.7,2025-07-11
+ART_0140,Technology,Email chain,Suspicious,0.904,0.012,37.4,2025-09-05
+ART_0141,Technology,Telegram,Likely Misinformation,0.899,0.576,48.7,2025-09-13
+ART_0142,Finance,Online blog,Suspicious,0.587,0.195,66.6,2025-08-26
+ART_0143,Science,Facebook post,Suspicious,0.584,0.141,58.1,2025-09-26
+ART_0144,Celebrity,Telegram,Credible,0.872,0.076,66.7,2025-08-05
+ART_0145,Health,Facebook post,Credible,0.95,0.078,79.7,2025-09-02
+ART_0146,Finance,Email chain,Credible,0.961,0.044,58.3,2025-08-05
+ART_0147,Health,WhatsApp forward,Credible,0.601,0.064,61.8,2025-07-27
+ART_0148,Celebrity,Facebook post,Suspicious,0.914,0.089,43.3,2025-07-23
+ART_0149,Finance,Email chain,Credible,0.463,0.0,49.3,2025-09-14
+ART_0150,Science,News website,Likely Misinformation,0.911,0.211,48.8,2025-08-26
+ART_0151,Celebrity,Email chain,Likely Misinformation,0.799,0.098,33.7,2025-07-10
+ART_0152,Finance,Twitter/X,Credible,0.443,0.034,48.8,2025-09-03
+ART_0153,Health,Online blog,Suspicious,0.745,0.123,54.1,2025-07-14
+ART_0154,Politics,Telegram,Likely Misinformation,0.916,0.094,35.1,2025-07-07
+ART_0155,Disaster,Facebook post,Credible,0.937,0.108,63.0,2025-08-08
+ART_0156,Science,Telegram,Credible,0.719,0.098,32.7,2025-07-14
+ART_0157,Technology,Facebook post,Credible,0.763,0.096,34.8,2025-07-06
+ART_0158,Health,News website,Suspicious,0.889,0.062,49.9,2025-08-22
+ART_0159,Celebrity,Telegram,Credible,0.625,0.074,49.1,2025-07-15
+ART_0160,Science,News website,Credible,0.553,0.167,58.2,2025-07-25
+ART_0161,Health,Twitter/X,Suspicious,0.788,0.162,50.7,2025-09-08
+ART_0162,Technology,News website,Suspicious,0.875,0.084,56.8,2025-08-19
+ART_0163,Science,Online blog,Likely Misinformation,0.446,0.542,65.7,2025-09-19
+ART_0164,Technology,Telegram,Likely Misinformation,0.793,0.372,36.0,2025-08-06
+ART_0165,Politics,WhatsApp forward,Likely Misinformation,0.869,0.076,51.2,2025-09-14
+ART_0166,Technology,Facebook post,Credible,0.486,0.119,46.0,2025-09-26
+ART_0167,Science,Telegram,Credible,0.63,0.065,43.8,2025-08-28
+ART_0168,Celebrity,Telegram,Credible,0.741,0.156,35.6,2025-07-05
+ART_0169,Disaster,Email chain,Suspicious,0.96,0.02,35.3,2025-07-26
+ART_0170,Disaster,Online blog,Credible,0.909,0.053,62.7,2025-09-20
+ART_0171,Politics,Online blog,Suspicious,0.634,0.124,64.0,2025-08-02
+ART_0172,Finance,Facebook post,Credible,0.538,0.149,76.0,2025-08-01
+ART_0173,Technology,Online blog,Credible,0.58,0.169,72.9,2025-09-04
+ART_0174,Politics,WhatsApp forward,Likely Misinformation,0.574,0.446,68.7,2025-08-09
+ART_0175,Disaster,Facebook post,Suspicious,0.452,0.088,75.7,2025-08-24
+ART_0176,Disaster,Email chain,Suspicious,0.617,0.011,69.6,2025-07-10
+ART_0177,Science,WhatsApp forward,Suspicious,0.853,0.105,58.4,2025-07-07
+ART_0178,Politics,Email chain,Likely Misinformation,0.433,0.02,32.5,2025-08-23
+ART_0179,Finance,Email chain,Credible,0.669,0.079,76.2,2025-09-01
+ART_0180,Science,Telegram,Credible,0.659,0.192,53.7,2025-09-12
+ART_0181,Technology,Online blog,Credible,0.834,0.138,44.3,2025-08-02
+ART_0182,Disaster,Email chain,Credible,0.96,0.171,62.4,2025-09-07
+ART_0183,Science,Telegram,Credible,0.412,0.156,68.4,2025-07-16
+ART_0184,Celebrity,WhatsApp forward,Likely Misinformation,0.749,0.005,42.6,2025-08-23
+ART_0185,Celebrity,Online blog,Likely Misinformation,0.646,0.226,47.4,2025-08-07
+ART_0186,Celebrity,Telegram,Suspicious,0.878,0.079,35.1,2025-09-22
+ART_0187,Technology,Online blog,Likely Misinformation,0.726,0.356,44.1,2025-09-04
+ART_0188,Finance,Online blog,Suspicious,0.772,0.172,43.1,2025-09-21
+ART_0189,Politics,Telegram,Credible,0.844,0.18,70.3,2025-09-13
+ART_0190,Celebrity,WhatsApp forward,Suspicious,0.818,0.131,79.9,2025-08-14
+ART_0191,Celebrity,Twitter/X,Credible,0.738,0.199,70.8,2025-08-24
+ART_0192,Celebrity,Telegram,Suspicious,0.77,0.095,77.0,2025-08-17
+ART_0193,Politics,Email chain,Credible,0.781,0.112,44.7,2025-08-05
+ART_0194,Celebrity,Email chain,Suspicious,0.724,0.183,77.3,2025-08-21
+ART_0195,Finance,WhatsApp forward,Credible,0.832,0.061,69.4,2025-08-12
+ART_0196,Finance,News website,Credible,0.894,0.094,73.3,2025-09-19
+ART_0197,Health,News website,Likely Misinformation,0.916,0.3,73.4,2025-08-17
+ART_0198,Health,Email chain,Credible,0.895,0.027,40.0,2025-08-19
+ART_0199,Science,WhatsApp forward,Likely Misinformation,0.584,0.429,68.9,2025-08-11
+ART_0200,Politics,Online blog,Suspicious,0.768,0.001,43.7,2025-07-19

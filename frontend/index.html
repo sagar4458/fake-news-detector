@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruthLens — Misinformation Analyser</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e4e8ec;--surface:#edf0f3;--surface2:#f4f6f8;
+  --border:#c8cdd4;--border2:#adb4bc;
+  --ink:#1c2128;--muted:#5a6270;--mono:#3d4a56;
+  --green:#1a7a4a;--green-bg:#eaf5ef;--green-border:#a3d4b8;
+  --amber:#7a5200;--amber-bg:#fdf4e0;--amber-border:#d4b060;
+  --red:#7a1a1a;--red-bg:#fdf0f0;--red-border:#d49090;
+  --blue:#1a4a7a;--blue-bg:#eaf0f8;--blue-border:#a0b8d8;
+  --accent:#2c4a6e;--accent-hover:#1e3654;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background-color:var(--bg);
+  background-image:
+    linear-gradient(rgba(44,74,110,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(44,74,110,.05) 1px,transparent 1px),
+    linear-gradient(rgba(44,74,110,.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(44,74,110,.02) 1px,transparent 1px);
+  background-size:80px 80px,80px 80px,16px 16px,16px 16px;
+  color:var(--ink);font-family:'Inter',sans-serif;min-height:100vh;font-size:14px;
+}
+body.dark{
+  --bg:#0e1420;--surface:#141e2c;--surface2:#1a2638;
+  --border:#243040;--border2:#2e3e50;
+  --ink:#c8d4e0;--muted:#607080;--mono:#7a9ab0;
+  --accent:#3a6090;--accent-hover:#2a5080;
+  --green:#2a9a5a;--green-bg:#0a2018;--green-border:#1a5030;
+  --amber:#c09020;--amber-bg:#201800;--amber-border:#504010;
+  --red:#c04040;--red-bg:#200808;--red-border:#502020;
+  --blue:#2a6ab0;--blue-bg:#0a1828;--blue-border:#1a4060;
+  background-image:
+    linear-gradient(rgba(58,96,144,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(58,96,144,.07) 1px,transparent 1px),
+    linear-gradient(rgba(58,96,144,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(58,96,144,.03) 1px,transparent 1px);
+  background-size:80px 80px,80px 80px,16px 16px,16px 16px;
+}
+body.dark input,body.dark textarea{background:var(--surface)!important;color:var(--ink)!important}
+body.dark input:focus,body.dark textarea:focus{background:var(--surface2)!important}
+
+header{
+  background:var(--ink);color:#e8ecf0;padding:0 40px;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:2px solid #2a3a4a;position:sticky;top:0;z-index:100;
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{
+  width:30px;height:30px;border:1.5px solid #5a8ab0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Share Tech Mono',monospace;font-size:.72rem;color:#5a8ab0;
+}
+.logo-name{font-size:1rem;font-weight:700;letter-spacing:.04em;color:#e8ecf0}
+.logo-name span{color:#7ab0d8}
+.header-right{display:flex;align-items:center;gap:20px}
+.header-tag{font-family:'Inter',sans-serif;font-size:.85rem;font-weight:500;color:#8aaabb}
+.toggle-wrap{display:flex;align-items:center;gap:9px;cursor:pointer}
+.toggle-lbl{font-family:'Inter',sans-serif;font-size:.8rem;color:#8aaabb;user-select:none;font-weight:500}
+.toggle-track{
+  width:42px;height:23px;background:#2a3a4a;border-radius:12px;
+  position:relative;transition:.25s;border:1px solid #3a4a5a;cursor:pointer;flex-shrink:0;
+}
+.toggle-track.on{background:var(--accent)}
+.toggle-thumb{
+  width:17px;height:17px;background:#7a9ab8;border-radius:50%;
+  position:absolute;top:2px;left:2px;transition:.25s;
+}
+.toggle-track.on .toggle-thumb{left:21px;background:#fff}
+
+.status-bar{
+  background:#141e2c;color:#5a9a7a;padding:7px 40px;
+  font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;
+  display:flex;gap:24px;border-bottom:1px solid #1e2e3e;
+}
+.sb-item{display:flex;align-items:center;gap:7px}
+.sb-dot{width:6px;height:6px;border-radius:50%;background:#4a8a6a;animation:blink 2.5s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:.5}50%{opacity:1}}
+
+main{max-width:900px;margin:0 auto;padding:28px 20px}
+
+.page-head{margin-bottom:20px;padding:16px 20px;background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:3px}
+.page-head h1{font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:5px}
+.page-head p{color:var(--muted);font-size:.82rem;line-height:1.65;max-width:600px}
+
+.input-panel{background:var(--surface2);border:1px solid var(--border);border-radius:3px;margin-bottom:14px;overflow:hidden}
+.panel-header{background:var(--surface);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:8px}
+.panel-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.7}
+.panel-title{font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--mono);letter-spacing:.1em}
+.panel-body{padding:16px}
+
+.input-tabs{display:flex;margin-bottom:14px;border:1px solid var(--border);border-radius:3px;overflow:hidden;width:fit-content}
+.itab{padding:7px 18px;font-size:.75rem;font-weight:600;cursor:pointer;color:var(--muted);background:var(--surface);transition:.15s;font-family:'Share Tech Mono',monospace;letter-spacing:.06em;border-right:1px solid var(--border)}
+.itab:last-child{border-right:none}
+.itab.active{background:var(--accent);color:#fff}
+
+.field{margin-bottom:11px}
+label{display:block;font-size:.67rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-family:'Share Tech Mono',monospace}
+input[type="text"],input[type="url"],textarea{
+  width:100%;background:var(--surface);border:1px solid var(--border);
+  border-radius:3px;padding:8px 12px;font-family:'Inter',sans-serif;
+  font-size:.82rem;color:var(--ink);outline:none;transition:border-color .15s;
+}
+input:focus,textarea:focus{border-color:var(--accent);background:var(--surface2)}
+textarea{min-height:130px;resize:vertical;line-height:1.6}
+
+.url-note{font-size:.72rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:3px;line-height:1.6}
+
+.btn-row{display:flex;gap:8px;align-items:center;margin-top:12px}
+.btn{padding:8px 20px;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;border-radius:3px;transition:.15s;border:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.btn-secondary{background:var(--surface);color:var(--muted);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.char-count{font-size:.7rem;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-left:4px}
+
+.inline-msg{display:none;margin-top:12px;padding:13px 16px;border-radius:3px;border:1px solid;border-left:3px solid;font-size:.8rem;line-height:1.65}
+.inline-msg.error{background:var(--red-bg);border-color:var(--red-border);border-left-color:var(--red);color:var(--red)}
+.inline-msg.warning{background:var(--amber-bg);border-color:var(--amber-border);border-left-color:var(--amber);color:var(--amber)}
+.inline-msg.info{background:var(--blue-bg);border-color:var(--blue-border);border-left-color:var(--blue);color:var(--blue)}
+.msg-title{font-weight:700;margin-bottom:4px;font-size:.78rem}
+.msg-domain{margin-top:8px;font-size:.75rem;padding:6px 10px;background:rgba(0,0,0,.05);border-radius:2px;font-family:'Share Tech Mono',monospace}
+.msg-hint{margin-top:8px;font-size:.74rem;opacity:.8}
+
+#resultSection{display:none}
+
+.fetch-warning{padding:9px 13px;background:var(--amber-bg);border:1px solid var(--amber-border);border-left:3px solid var(--amber);border-radius:3px;font-size:.75rem;color:var(--amber);margin-bottom:12px;line-height:1.5}
+
+.verdict-panel{border:1.5px solid var(--border);border-radius:3px;margin-bottom:12px;overflow:hidden}
+.verdict-head{padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.verdict-left{display:flex;align-items:center;gap:14px}
+.verdict-score{font-size:2.2rem;font-weight:700;font-family:'Share Tech Mono',monospace;line-height:1}
+.verdict-label{font-size:.95rem;font-weight:700;margin-bottom:3px}
+.verdict-sub{font-size:.72rem;color:var(--muted);line-height:1.5;font-family:'Share Tech Mono',monospace}
+.verdict-chip{font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:5px 12px;border-radius:2px;font-weight:700;letter-spacing:.08em;border:1px solid}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+
+.metric-box{background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:11px 13px}
+.metric-box .val{font-size:1.4rem;font-weight:700;font-family:'Share Tech Mono',monospace;color:var(--ink)}
+.metric-box .lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-top:3px;font-family:'Share Tech Mono',monospace}
+
+.section-box{background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:13px;margin-bottom:10px}
+.section-box h4{font-family:'Share Tech Mono',monospace;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mono);margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+.sig-item{font-size:.78rem;padding:5px 0;border-bottom:1px solid var(--border);line-height:1.5;color:var(--ink);display:flex;align-items:flex-start;gap:7px}
+.sig-item:last-child{border-bottom:none}
+.sig-icon{flex-shrink:0;font-size:.72rem;margin-top:1px}
+
+.phrase-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.ptag{font-size:.68rem;padding:3px 8px;border-radius:2px;font-family:'Share Tech Mono',monospace;letter-spacing:.04em}
+.ptag.sus{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.ptag.cred{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+
+.highlight-text{line-height:2.1;font-size:.8rem;color:var(--ink)}
+.hl-sus{background:var(--amber-bg);border-bottom:2px solid var(--amber-border);padding:1px 3px;border-radius:2px;cursor:default}
+.hl-cred{background:var(--green-bg);border-bottom:2px solid var(--green-border);padding:1px 3px;border-radius:2px;cursor:default}
+.hl-legend{display:flex;gap:14px;margin-bottom:10px}
+.hl-leg-item{display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--muted);font-family:'Share Tech Mono',monospace}
+.hl-swatch{width:12px;height:12px;border-radius:1px}
+
+.factcheck-item{padding:9px 0;border-bottom:1px solid var(--border)}
+.factcheck-item:last-child{border-bottom:none}
+.fc-claim{font-size:.78rem;color:var(--ink);margin-bottom:5px;line-height:1.5}
+.fc-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fc-rating{font-size:.65rem;font-weight:700;font-family:'Share Tech Mono',monospace;padding:2px 7px;border-radius:2px;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.fc-pub{font-size:.65rem;color:var(--muted);font-family:'Share Tech Mono',monospace}
+.fc-link{font-size:.65rem;color:var(--accent);text-decoration:none}
+.fc-link:hover{text-decoration:underline}
+.fc-none{font-size:.78rem;color:var(--muted);font-style:italic}
+
+.domain-strip{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:3px;margin-bottom:10px;font-size:.75rem;font-family:'Share Tech Mono',monospace;letter-spacing:.05em;border:1px solid}
+
+.disclaimer{margin-top:12px;padding:9px 13px;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--border2);border-radius:3px;font-size:.71rem;color:var(--muted);line-height:1.6}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-mark">TL</div>
+    <div class="logo-name">Truth<span>Lens</span></div>
+  </div>
+  <div class="header-right">
+    <div class="header-tag">Misinformation Analysis System</div>
+    <div class="toggle-wrap" onclick="toggleDark()">
+      <span class="toggle-lbl" id="toggleLbl">Dark</span>
+      <div class="toggle-track" id="toggleTrack">
+        <div class="toggle-thumb"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="status-bar">
+  <div class="sb-item"><div class="sb-dot"></div>System active</div>
+  <div class="sb-item"><div class="sb-dot"></div>Accuracy: 99.5%</div>
+  <div class="sb-item"><div class="sb-dot"></div>Fact-check: Google API</div>
+</div>
+
+<main>
+  <div class="page-head">
+    <h1>Misinformation Analysis</h1>
+    <p>Paste an article, enter a URL, or type a claim. The system analyses linguistic patterns, credibility signals, and cross-references against Google's fact-checking database.</p>
+  </div>
+
+  <div class="input-panel">
+    <div class="panel-header">
+      <div class="panel-dot"></div>
+      <div class="panel-title">// INPUT TERMINAL</div>
+    </div>
+    <div class="panel-body">
+      <div class="input-tabs">
+        <div class="itab active" onclick="switchTab('text')">TEXT / ARTICLE</div>
+        <div class="itab" onclick="switchTab('url')">URL FETCH</div>
+      </div>
+
+      <div id="tab-text">
+        <div class="field">
+          <label>Headline (optional)</label>
+          <input type="text" id="titleInput" placeholder="Article headline or claim...">
+        </div>
+        <div class="field">
+          <label>Article Content</label>
+          <textarea id="textInput" placeholder="Paste article body here..." oninput="updateCount()"></textarea>
+        </div>
+      </div>
+
+      <div id="tab-url" style="display:none">
+        <div class="field">
+          <label>Article URL</label>
+          <input type="url" id="urlInput" placeholder="https://example.com/article" oninput="clearMsg()">
+        </div>
+        <div class="field">
+          <label>Override Headline (optional)</label>
+          <input type="text" id="urlTitleInput" placeholder="Leave blank to auto-detect">
+        </div>
+        <div class="url-note">
+          Supports most news sites. If a site blocks access, the domain credibility is still analysed and displayed.
+        </div>
+      </div>
+
+      <div class="inline-msg" id="inlineMsg">
+        <div class="msg-title" id="msgTitle"></div>
+        <div id="msgBody"></div>
+        <div class="msg-domain" id="msgDomain" style="display:none"></div>
+        <div class="msg-hint" id="msgHint" style="display:none"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" id="analyseBtn" onclick="analyse()">Analyse Article</button>
+        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+        <span class="char-count" id="charCount">0 chars</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="resultSection">
+    <div id="domainStrip"></div>
+    <div class="fetch-warning" id="fetchWarning" style="display:none"></div>
+
+    <div class="verdict-panel" id="verdictPanel">
+      <div class="verdict-head" id="verdictHead">
+        <div class="verdict-left">
+          <div class="verdict-score" id="vScore"></div>
+          <div>
+            <div class="verdict-label" id="vLabel"></div>
+            <div class="verdict-sub" id="vSub"></div>
+          </div>
+        </div>
+        <div class="verdict-chip" id="vChip"></div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="metric-box"><div class="val" id="mSens"></div><div class="lbl">Sensationalism</div></div>
+      <div class="metric-box"><div class="val" id="mEmo"></div><div class="lbl">Emotional Loading</div></div>
+      <div class="metric-box"><div class="val" id="mCred"></div><div class="lbl">Credibility Markers</div></div>
+    </div>
+    <div class="grid-4">
+      <div class="metric-box"><div class="val" id="dML"></div><div class="lbl">ML Probability</div></div>
+      <div class="metric-box"><div class="val" id="dRead"></div><div class="lbl">Readability</div></div>
+      <div class="metric-box"><div class="val" id="dLex"></div><div class="lbl">Lexical Diversity</div></div>
+      <div class="metric-box"><div class="val" id="dHedge"></div><div class="lbl">Hedging Language</div></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="section-box"><h4>⚠ Red Flags</h4><div id="redFlags"></div></div>
+      <div class="section-box"><h4>✓ Positive Signals</h4><div id="posSignals"></div></div>
+    </div>
+
+    <div class="section-box"><h4>Detected Phrases</h4><div id="phrasesContent"></div></div>
+
+    <div class="section-box">
+      <h4>Sentence Analysis</h4>
+      <div class="hl-legend">
+        <div class="hl-leg-item"><div class="hl-swatch" style="background:var(--amber-bg);border:1px solid var(--amber-border)"></div>Suspicious</div>
+        <div class="hl-leg-item"><div class="hl-swatch" style="background:var(--green-bg);border:1px solid var(--green-border)"></div>Credible</div>
+        <div class="hl-leg-item"><div class="hl-swatch" style="background:var(--surface);border:1px solid var(--border)"></div>Neutral</div>
+      </div>
+      <div class="highlight-text" id="highlightedText"></div>
+    </div>
+
+    <div class="section-box"><h4>Fact-Check Database</h4><div id="factcheckResults"></div></div>
+
+    <div class="disclaimer">
+      This tool is a research aid — not a definitive fact-checker. Always verify important claims with primary sources and established fact-checking organisations.
+    </div>
+  </div>
+</main>
+
+<script>
+const API = 'http://localhost:5002';
+let activeTab = 'text';
+let darkMode  = false;
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.itab').forEach((t,i) =>
+    t.classList.toggle('active', ['text','url'][i] === tab));
+  document.getElementById('tab-text').style.display = tab === 'text' ? 'block' : 'none';
+  document.getElementById('tab-url').style.display  = tab === 'url'  ? 'block' : 'none';
+  clearMsg();
+}
+
+function updateCount() {
+  document.getElementById('charCount').textContent =
+    document.getElementById('textInput').value.length + ' chars';
+}
+
+function clearMsg() {
+  const m = document.getElementById('inlineMsg');
+  m.style.display = 'none';
+  m.className = 'inline-msg';
+}
+
+function showMsg(type, title, body, domain, hint) {
+  const m = document.getElementById('inlineMsg');
+  m.style.display = 'block';
+  m.className = 'inline-msg ' + type;
+  document.getElementById('msgTitle').textContent = title;
+  document.getElementById('msgBody').textContent  = body;
+  const domEl  = document.getElementById('msgDomain');
+  const hintEl = document.getElementById('msgHint');
+  if (domain) { domEl.textContent = domain; domEl.style.display = 'block'; }
+  else          domEl.style.display = 'none';
+  if (hint)   { hintEl.textContent = hint; hintEl.style.display = 'block'; }
+  else          hintEl.style.display = 'none';
+}
+
+function clearAll() {
+  ['titleInput','textInput','urlInput','urlTitleInput'].forEach(id =>
+    document.getElementById(id).value = '');
+  document.getElementById('charCount').textContent = '0 chars';
+  document.getElementById('resultSection').style.display = 'none';
+  clearMsg();
+}
+
+function toggleDark() {
+  darkMode = !darkMode;
+  document.body.classList.toggle('dark', darkMode);
+  document.getElementById('toggleTrack').classList.toggle('on', darkMode);
+  document.getElementById('toggleLbl').textContent = darkMode ? 'Light' : 'Dark';
+}
+
+async function analyse() {
+  const btn     = document.getElementById('analyseBtn');
+  const payload = {};
+  clearMsg();
+
+  if (activeTab === 'url') {
+    const url = document.getElementById('urlInput').value.trim();
+    if (!url) { showMsg('error','Input required','Please enter a URL.'); return; }
+    payload.url   = url;
+    payload.title = document.getElementById('urlTitleInput').value.trim();
+  } else {
+    const text = document.getElementById('textInput').value.trim();
+    if (text.length < 30) {
+      showMsg('error','Too short','Please enter at least 30 characters of article text.');
+      return;
+    }
+    payload.text  = text;
+    payload.title = document.getElementById('titleInput').value.trim();
+  }
+
+  btn.textContent = 'Analysing...';
+  btn.disabled    = true;
+
+  try {
+    const resp = await fetch(`${API}/api/analyse`, {
+      method:  'POST',
+      headers: {'Content-Type': 'application/json'},
+      body:    JSON.stringify(payload)
+    });
+    const data = await resp.json();
+
+    if (!data.success) {
+      const type = data.error_type;
+      if (type === 'not_found') {
+        showMsg('error', 'Page not found (404)',
+          'The URL does not exist. Check for typos.',
+          data.url, 'Try a different URL or paste the article text manually.');
+      } else if (type === 'invalid_url') {
+        showMsg('error', 'Invalid URL',
+          data.error, null, 'Make sure the URL starts with https://');
+      } else if (type === 'connection_error') {
+        showMsg('error', 'Connection failed',
+          'Could not reach that URL. The site may be down or unreachable.',
+          null, 'Check the URL or paste the article text manually using the TEXT tab.');
+      } else if (type === 'blocked' || type === 'timeout' || type === 'rate_limited') {
+        showMsg('warning', 'Access restricted',
+          data.error,
+          data.domain_name ? `Domain: ${data.domain_name} — ${data.domain_status}` : null,
+          'Paste the article text manually using the TEXT tab for full analysis.');
+      } else {
+        showMsg('error', 'Could not fetch content',
+          data.error,
+          data.domain_name ? `Domain: ${data.domain_name} — ${data.domain_status}` : null,
+          'Switch to the TEXT tab and paste the article content directly.');
+      }
+      btn.textContent = 'Analyse Article';
+      btn.disabled    = false;
+      return;
+    }
+
+    showResult(data);
+  } catch(e) {
+    showMsg('error', 'Backend not reachable',
+      'Cannot connect to the backend server.',
+      null, 'Make sure app.py is running on port 5002.');
+  }
+
+  btn.textContent = 'Analyse Article';
+  btn.disabled    = false;
+}
+
+function verdictStyle(verdict) {
+  if (verdict === 'Likely Misinformation')
+    return {bg:'var(--red-bg)',border:'var(--red-border)',color:'var(--red)',chip:'MISINFORMATION'};
+  if (verdict === 'Suspicious — verify independently')
+    return {bg:'var(--amber-bg)',border:'var(--amber-border)',color:'var(--amber)',chip:'UNVERIFIED'};
+  return {bg:'var(--green-bg)',border:'var(--green-border)',color:'var(--green)',chip:'CREDIBLE'};
+}
+
+function showResult(d) {
+  const fw = document.getElementById('fetchWarning');
+  if (d.fetch_warning) { fw.textContent = '⚠ ' + d.fetch_warning; fw.style.display = 'block'; }
+  else fw.style.display = 'none';
+
+  const s = verdictStyle(d.verdict);
+  document.getElementById('verdictPanel').style.borderColor = s.border;
+  document.getElementById('verdictHead').style.background   = s.bg;
+  document.getElementById('vScore').textContent  = d.overall_score + '%';
+  document.getElementById('vScore').style.color  = s.color;
+  document.getElementById('vLabel').textContent  = d.verdict;
+  document.getElementById('vLabel').style.color  = s.color;
+  document.getElementById('vSub').textContent    =
+    `ML: ${d.ml_fake_prob}%  ·  SENS: ${d.sensationalism}%  ·  CRED: ${d.credibility}%`;
+
+  const chip = document.getElementById('vChip');
+  chip.textContent = s.chip; chip.style.color = s.color;
+  chip.style.borderColor = s.border; chip.style.background = s.bg;
+
+  document.getElementById('mSens').textContent  = d.sensationalism + '%';
+  document.getElementById('mEmo').textContent   = d.emotional_loading + '%';
+  document.getElementById('mCred').textContent  = d.credibility + '%';
+  document.getElementById('dML').textContent    = d.ml_fake_prob + '%';
+  document.getElementById('dRead').textContent  = d.readability;
+  document.getElementById('dLex').textContent   = d.lexical_diversity + '%';
+  document.getElementById('dHedge').textContent = d.hedging_score + '%';
+
+  document.getElementById('redFlags').innerHTML = d.red_flags.length
+    ? d.red_flags.map(f => `<div class="sig-item"><span class="sig-icon">⚠</span>${f}</div>`).join('')
+    : '<div class="sig-item" style="color:var(--green)"><span class="sig-icon">✓</span>No major red flags detected</div>';
+
+  document.getElementById('posSignals').innerHTML = d.positive_signals.length
+    ? d.positive_signals.map(f => `<div class="sig-item"><span class="sig-icon">✓</span>${f}</div>`).join('')
+    : '<div class="sig-item" style="color:var(--muted)">No strong positive signals found</div>';
+
+  let phHtml = '';
+  if (d.sensational_phrases.length)
+    phHtml += `<div style="margin-bottom:8px">
+      <div style="font-size:.63rem;color:var(--amber);font-family:Share Tech Mono,monospace;letter-spacing:.08em;margin-bottom:4px">SENSATIONAL PHRASES</div>
+      <div class="phrase-tags">${d.sensational_phrases.map(p=>`<span class="ptag sus">${p}</span>`).join('')}</div></div>`;
+  if (d.credible_phrases.length)
+    phHtml += `<div>
+      <div style="font-size:.63rem;color:var(--green);font-family:Share Tech Mono,monospace;letter-spacing:.08em;margin-bottom:4px">CREDIBLE PHRASES</div>
+      <div class="phrase-tags">${d.credible_phrases.map(p=>`<span class="ptag cred">${p}</span>`).join('')}</div></div>`;
+  if (!phHtml) phHtml = '<div style="font-size:.77rem;color:var(--muted)">No notable phrases flagged.</div>';
+  document.getElementById('phrasesContent').innerHTML = phHtml;
+
+  document.getElementById('highlightedText').innerHTML =
+    d.highlighted.map(s =>
+      s.tag === 'suspicious' ? `<span class="hl-sus">${s.text}</span> ` :
+      s.tag === 'credible'   ? `<span class="hl-cred">${s.text}</span> ` :
+                               `<span>${s.text}</span> `
+    ).join('');
+
+  document.getElementById('factcheckResults').innerHTML =
+    d.factchecks && d.factchecks.length
+      ? d.factchecks.map(fc => `
+          <div class="factcheck-item">
+            <div class="fc-claim">${fc.claim}</div>
+            <div class="fc-meta">
+              <span class="fc-rating">${fc.rating}</span>
+              <span class="fc-pub">${fc.publisher}</span>
+              ${fc.url ? `<a class="fc-link" href="${fc.url}" target="_blank">View source →</a>` : ''}
+            </div>
+          </div>`).join('')
+      : '<div class="fc-none">No matching fact-checks found in Google\'s database.</div>';
+
+  const ds = document.getElementById('domainStrip');
+  if (d.domain_name) {
+    const col = d.domain_status === 'reliable'
+      ? `background:var(--green-bg);border-color:var(--green-border);color:var(--green)`
+      : d.domain_status === 'unreliable'
+      ? `background:var(--red-bg);border-color:var(--red-border);color:var(--red)`
+      : `background:var(--surface);border-color:var(--border);color:var(--muted)`;
+    ds.innerHTML = `<div class="domain-strip" style="${col}">Domain: ${d.domain_name} — ${d.domain_status}</div>`;
+  } else ds.innerHTML = '';
+
+  document.getElementById('resultSection').style.display = 'block';
+  document.getElementById('resultSection').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>

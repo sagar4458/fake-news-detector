@@ -1,0 +1,5 @@
+data/raw/
+model/fake_news_model.joblib
+__pycache__/
+*.pyc
+*.pth

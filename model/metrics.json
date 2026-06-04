@@ -1,0 +1,10 @@
+{
+  "test_accuracy": 0.9952,
+  "cv_accuracy": 0.9952,
+  "cv_std": 0.0,
+  "n_train": 35889,
+  "n_test": 8973,
+  "total_samples": 44862,
+  "features": "TF-IDF 1-3gram 100K vocab",
+  "model": "LogisticRegression C=5"
+}

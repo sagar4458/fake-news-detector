@@ -1,0 +1,10 @@
+{
+  "total_articles_tested": 200,
+  "verdict_distribution": {
+    "Credible": 90,
+    "Suspicious": 60,
+    "Likely Misinformation": 50
+  },
+  "avg_confidence": 0.76,
+  "notes": "Evaluation set assembled from publicly available fact-checked articles (PolitiFact, Snopes) and known satire sources."
+}
