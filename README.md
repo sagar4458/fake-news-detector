@@ -29,13 +29,13 @@ Originally built in October 2025. Rebuilt from scratch in June 2026 with a real 
 |---|---|
 | ![Analysis 1](screenshots/5.new_dashboard_analysis_report.png) | ![Analysis 2](screenshots/6.new_dashboard_analysis_report_2.png) |
 
-| URL Error Handling | Google Fact Check API - Live |
+| URL Error Handling |
 |---|---|
 | ![Error Handling](screenshots/7.new_dashboard_analysis_url_error_report.png) |
 
 | Traffic | Errors | Median Latency |
 |---|---|---|
-| ![Traffic](screenshots/10.Traffic.png) | ![Errors](screenshots/9.Errors.png) | ![Latency](screenshots/8.Median_latency.png) |
+| ![Traffic](screenshots/10.Traffic.png) | ![Errors](screenshots/9.Errors.png) | ![Latency](screenshots/8.Median latency.png) |
 
 **2 requests · 0 errors · 0.4ms median latency**
 
