@@ -3,6 +3,7 @@ from flask_cors import CORS
 import numpy as np, re, os, joblib, requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
+import os as _os
 
 app  = Flask(__name__)
 CORS(app)
@@ -10,7 +11,7 @@ CORS(app)
 MODEL_DIR = os.path.join(os.path.dirname(__file__), "..", "model")
 _pipeline = joblib.load(os.path.join(MODEL_DIR, "fake_news_model.joblib"))
 
-GOOGLE_FACTCHECK_API_KEY = "AIzaSyBWjo8HMuxk_HXZN0WSfL5TuWWdKthCMOI"
+GOOGLE_FACTCHECK_API_KEY = _os.environ.get("GOOGLE_FACTCHECK_API_KEY", "")
 GOOGLE_FACTCHECK_URL     = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
 
 SENSATIONAL = [
