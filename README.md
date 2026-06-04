@@ -18,23 +18,25 @@ Originally built in October 2025. Rebuilt from scratch in June 2026 with a real 
 ### original version - October 2025
 | Dashboard | Results |
 |---|---|
-| ![Old Dashboard](screenshots/1.old_frontend.png) | ![Old Results](screenshots/2.old_frontend_results.png) |
+| ![Old Dashboard](screenshots/1_old_frontend.png) | ![Old Results](screenshots/2_old_frontend_results.png) |
 
 ### rebuilt version - June 2026
 | New Dashboard | Dark Mode |
 |---|---|
-| ![New Dashboard](screenshots/3.new_updated_dashboard.png) | ![Dark Mode](screenshots/4.new_updated_dashboard_dark_mode.png) |
+| ![New Dashboard](screenshots/3_new_updated_dashboard.png) | ![Dark Mode](screenshots/4_new_updated_dashboard_dark_mode.png) |
 
 | Analysis Result | URL Fetch Result |
 |---|---|
-| ![Analysis 1](screenshots/5.new_dashboard_analysis_report.png) | ![Analysis 2](screenshots/6.new_dashboard_analysis_report_2.png) |
+| ![Analysis 1](screenshots/5_new_dashboard_analysis_report.png) | ![Analysis 2](screenshots/6_new_dashboard_analysis_report_2.png) |
 
-### URL Error Handling
-| ![Error Handling](screenshots/7.new_dashboard_analysis_url_error_report.png) |
+| URL Error Handling | Google Fact Check API |
+|---|---|
+| ![Error Handling](screenshots/7_new_dashboard_analysis_url_error_report.png) | ![API Dashboard](screenshots/factcheck_api.png) |
 
+### google api metrics - june 2026
 | Traffic | Errors | Median Latency |
 |---|---|---|
-| ![Traffic](screenshots/10.Traffic.png) | ![Errors](screenshots/9.Errors.png) | ![Latency](screenshots/8.Median_latency.png) |
+| ![Traffic](screenshots/10_Traffic.png) | ![Errors](screenshots/9_Errors.png) | ![Latency](screenshots/8_Median_latency.png) |
 
 **2 requests · 0 errors · 0.4ms median latency**
 
