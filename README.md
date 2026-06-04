@@ -31,7 +31,13 @@ Originally built in October 2025. Rebuilt from scratch in June 2026 with a real 
 
 | URL Error Handling | Google Fact Check API - Live |
 |---|---|
-| ![Error Handling](screenshots/7.new_dashboard_analysis_url_error_report.png) | ![API Dashboard](screenshots/factcheck_api.png) |
+| ![Error Handling](screenshots/7.new_dashboard_analysis_url_error_report.png) |
+
+| Traffic | Errors | Median Latency |
+|---|---|---|
+| ![Traffic](screenshots/10_Traffic.png) | ![Errors](screenshots/9_Errors.png) | ![Latency](screenshots/8_Median_latency.png) |
+
+**2 requests · 0 errors · 0.4ms median latency**
 
 ---
 
