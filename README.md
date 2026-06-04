@@ -35,7 +35,7 @@ Originally built in October 2025. Rebuilt from scratch in June 2026 with a real 
 
 | Traffic | Errors | Median Latency |
 |---|---|---|
-| ![Traffic](screenshots/10_Traffic.png) | ![Errors](screenshots/9_Errors.png) | ![Latency](screenshots/8_Median_latency.png) |
+| ![Traffic](screenshots/10.Traffic.png) | ![Errors](screenshots/9.Errors.png) | ![Latency](screenshots/8.Median_latency.png) |
 
 **2 requests · 0 errors · 0.4ms median latency**
 
